@@ -19,7 +19,7 @@ function isFormValid(name, password){
 	if(name.length != 0 && password.length != 0)
 	{
 		var request = new Object()
-		request.name = name
+		request.username = name
 		request.password = password
    		var jsonString= JSON.stringify(request)
 		loginRequest(request)

@@ -24,3 +24,9 @@ body{
     font-size: xx-large;
     font-family: system-ui;
 }
+.title{
+    padding: 1rem;
+    font-size: xx-large;
+    font-family: system-ui;
+    color: white;
+}

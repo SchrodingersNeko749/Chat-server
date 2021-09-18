@@ -1,15 +1,17 @@
 function inputKey(input, ev)
 {
+    
     if(ev.keyCode == "13" && input.value!="")
     {
-        postMessage(input.value)
-        input.value = ""
+        console.log(input ,input.value)
+        postMessage(id,"neko",input.value)
+        //input.value = ""
     }
 }
 
-function postMessage(message) {
+function postMessage(id, target, message) {
     new Message(message)
-    connection.invoke("SendMessage", "neko", message).catch(function (err) {
+    connection.invoke("SendMessage", id, target, message).catch(function (err) {
         return console.error(err.toString());
     });
     chat = document.getElementById("messages")

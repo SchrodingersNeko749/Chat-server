@@ -22,5 +22,12 @@ class Message {
     }
 }
 function ClearChatHistory() {
-    document.getElementById("messages").removeChild()
+    var messages =  document.getElementById("messages")
+    messages.children[0].remove()
+}
+function ShowError(error) {
+    var errElmn = document.createElement("div")
+    errElmn.className = "Error"
+    errElmn.innerHTML = error
+    document.getElementById("messages").appendChild(errElmn)
 }
