@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ChatServer.Hubs;
-
+using ChatServer.Models;
 namespace ChatServer
 {
     public class Startup
@@ -17,6 +17,10 @@ namespace ChatServer
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            using(var client = new ChatServerContext())
+            {
+                client.Database.EnsureCreated();
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -26,6 +30,7 @@ namespace ChatServer
         {
             services.AddControllersWithViews();
             services.AddSignalR();
+            services.AddEntityFrameworkSqlite().AddDbContext<ChatServerContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

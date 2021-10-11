@@ -17,14 +17,9 @@ function loginRequest(request) {
         return console.error(err.toString());
     });
 }
-connection.on("LoginResponse", function (_id, _username,welcome) {
-    id = _id
-    username = _username
-    new Message(welcome)
+connection.on("LoginResponse", function (User) {
     form.parentElement.parentElement.style.display = "none"
-    connection.invoke("GetContacts", id).catch(function (err) {
-        return console.error(err.toString());
-    });
+    WelcomeBack(User)
 })
 connection.on("RecieveContacts", function(contacts){
     contacts.forEach(c => {

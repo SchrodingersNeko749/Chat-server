@@ -31,3 +31,8 @@ function ShowError(error) {
     errElmn.innerHTML = error
     document.getElementById("messages").appendChild(errElmn)
 }
+function WelcomeBack(User)
+{
+    new Message ("Welcome back " + User.name)
+
+}

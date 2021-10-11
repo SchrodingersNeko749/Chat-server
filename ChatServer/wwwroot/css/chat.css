@@ -15,9 +15,24 @@
     width: 100%;
     position: absolute;
     height: 100%;
+
     backdrop-filter: hue-rotate(
         250deg
         );
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);    
+    
+}
+#login input{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #15181a;
+  color: #8096a6;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 #chat{
     display: inline-flex;
@@ -25,7 +40,7 @@
     margin-left: 20%;
     
 }
-#contacts{
+#contacts-container{
     height: 100%;
     background-color:  #0a0415f0;
     display: block;
@@ -56,9 +71,6 @@
     width: 100%;
     margin: 0.5rem;
     font-size: 1rem;
-    
-}
-#input-btn{
     
 }
 #input-container{

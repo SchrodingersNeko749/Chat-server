@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using ChatServer.DTOs;
-namespace ChatServer.Entities
+namespace ChatServer.Models
 {
     public class Conversation
     {

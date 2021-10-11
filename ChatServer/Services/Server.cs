@@ -1,61 +1,43 @@
+using System;
 using ChatServer.DTOs;
-using ChatServer.Entities;
+using ChatServer.Models;
 using System.Collections.Generic;
+using System.Linq;
 namespace ChatServer.Services
 {
     class Server
     {
-        private Dictionary<int,User> _users = new Dictionary<int,User>();
-        private Dictionary<int,Conversation> _conversations = new Dictionary<int,Conversation>();
-
+        private readonly ChatroomRepository _repo;
         public Server()
         {
-            _users.Add(0, new User("neko", "neko"));
-            _users.Add(1, new User("alu", "alu"));
-            _users[0].AddContact(_users[1]);
-            _users[1].AddContact(_users[0]);
-            Conversation convo = new Conversation(0,1);
-            MessageDTO msg = new MessageDTO(1, "testing message: hi neko", 0);
-            convo.AddMessage(msg);
-            _conversations.Add(_conversations.Count, convo);
+            _repo = new ChatroomRepository();
+            var neko = CreateAccount(new LoginRequestDTO("neko","neko"));
+            CreateAccount(new LoginRequestDTO("alu","alu"));
+            neko._contacts_ID.Add(2);
+            _repo.SaveChanges();
         }
-        public int AddUser(User u)
+        public User Login(LoginRequestDTO req)
         {
-            int id = -1;
-            if(!_users.ContainsValue(u))
+            return _repo.FindUserByLoginRequest(req);
+        }
+        public User GetUser(int id)
+        {
+            return _repo.FindUser(id);
+        }
+        public User CreateAccount(LoginRequestDTO req)
+        {
+            if(!_repo.UsernameExists(req.Username))
             {
-                _users.Add(_users.Keys.Count, u);
-                id = _users.Keys.Count;
+                return _repo.AddUser(req);
             }
-            return id;
-        }
-        public bool UserExists(User u)
-        {
-            if(_users.ContainsValue(u))
-                return false;
             else
-                return true;
-        }
-        public User GetFirstUser()
-        {
-            return _users[0];
-        }
-        public int FindId(string username)
-        {
-            int id = -1;
-            foreach (var kvp in _users)
             {
-                if(kvp.Value.Name == username)
-                {
-                    id = kvp.Key;
-                    return id;
-                }
+                return _repo.FindUserByLoginRequest(req);
             }
-            return id;
         }
-        public User FindUser(int id)
+        public void AddContact()
         {
-            return _users[id];
+            
         }
     }
 }

@@ -4,7 +4,7 @@ function inputKey(input, ev)
     if(ev.keyCode == "13" && input.value!="")
     {
         console.log(input ,input.value)
-        postMessage(id,"neko",input.value)
+        postMessage(id,selectedContact,input.value)
         //input.value = ""
     }
 }

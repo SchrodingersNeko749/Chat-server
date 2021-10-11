@@ -8,13 +8,18 @@
     <script type="text/javascript" src="/js/chatroom/connection.js"></script>
     <script type="text/javascript" src="/js/login/form.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/basic_ui.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 
 </header>
 <body>
     <div id="app">
-        <div id="contacts">
+        <div id="contacts-container">
             <div class="title">Contacts</div>
+            <span></span>
+            <div id="contacts">
+
+            </div>
         </div>
         <div id="chat">
             <div id="messages" class="container">
@@ -30,8 +35,8 @@
         <div class="modal-container">
             <div class="modal-title">Login</div>
             <form id="login">
-                <input type="text" name="name" placeholder="your name">
-                <input type="text" name="password" placeholder="your password">  
+                <input type="text" autocapitalize="off" name="name" placeholder="your name">
+                <input type="text" autocapitalize="off" autocomplete="off" name="password" placeholder="your password">  
                 <button style="display: none;">Done</button>              
             </form>
         </div>

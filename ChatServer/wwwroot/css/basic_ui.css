@@ -10,7 +10,7 @@ body{
 }
 .modal-container{  
     transform: translate(-9rem, -4.5rem);
-    background-color: bisque;
+    background-color: rgba(4, 9, 10, 0.699);
     width: 18rem;
     height: 9rem;
     left: 50%;
@@ -18,15 +18,22 @@ body{
     position: relative;
     text-align: center;
     z-index: 1;
+    color: #8096a6;
+    height: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-style: solid;
+    border-width: thin;
 }
 .modal-title{
     padding: 1rem;
     font-size: xx-large;
-    font-family: system-ui;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
 }
 .title{
     padding: 1rem;
     font-size: xx-large;
-    font-family: system-ui;
+    font-family: "Roboto", sans-serif;
     color: white;
 }
